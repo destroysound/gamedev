@@ -3,8 +3,7 @@ stage {
     'users':       before => Stage['folders'];
     'folders':     before => Stage['updates'];
     'updates':     before => Stage['packages'];
-    'packages':    before => Stage['composer'];
-    'composer':    before => Stage['configure'];
+    'packages':    before => Stage['configure'];
     'configure':   before => Stage['services'];
     'services':    before => Stage['main'];
 }
@@ -48,29 +47,6 @@ class packages {
     }
 }
 
-class composer {
-    exec {
-        "get-composer":
-            command => '/usr/bin/sudo curl -sS https://getcomposer.org/installer | php',
-            unless => '/usr/bin/which composer';
-
-        "set-composer":
-            command => '/usr/bin/sudo mv composer.phar /usr/local/bin/composer',
-            unless => '/usr/bin/which composer',
-            require => Exec['get-composer'];
-
-        "composer-dir":
-            command => '/bin/mkdir -p ~/.composer',
-            unless => '/bin/ls ~/.composer';
-
-        "github-api-conf":
-            command => '/usr/bin/sudo cp /var/www/manifests/composer.json ~/.composer/config.json',
-            onlyif => '/bin/ls /var/www/manifests/composer.json',
-            unless => '/bin/ls ~/.composer/config.json',
-            require => Exec['composer-dir'];
-    }
-}
-
 class configure {
     exec {
         "clear-apache-conf":
@@ -95,10 +71,6 @@ class configure {
         "enable-php-mcrypt":
             command => '/usr/bin/sudo php5enmod mcrypt';
 
-        "mysql-bind-address":
-            command => '/usr/bin/sudo cp /vagrant/manifests/bind.cnf /etc/mysql/conf.d/bind.cnf',
-            unless => '/bin/ls /etc/mysql/conf.d/bind.cnf';
-
         "mysql-privilege":
             command => '/usr/bin/mysql -uroot -h 127.0.0.1 -e \'GRANT ALL PRIVILEGES ON sg.* TO "vagrant"@"%" IDENTIFIED BY "vagrant"; FLUSH PRIVILEGES;\'';
 
@@ -122,7 +94,6 @@ class {
     folders:     stage => "folders";
     updates:     stage => "updates";
     packages:    stage => "packages";
-    composer:    stage => "composer";
     configure:   stage => "configure";
     services:    stage => "services";
 }
