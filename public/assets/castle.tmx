@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Castle" tilewidth="32" tileheight="32">
+  <image source="tilemaps/tilesets/Castle.png" width="512" height="512"/>
+ </tileset>
+ <layer name="Terrain" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1LEJgFAQBcHrvyG1gN+XiZEgmLngBJM/buHWzCwAAICI/YWvN/6JHk33u+vQoEOHH9WiR8t2tTgCW9CjRo8WPVr0aNGjRY8WPVr0aNGjRY8WPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAJyeXkQ3g
+  </data>
+ </layer>
+ <layer name="Buildings" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0U1qAkEQgNHeGbxAQi4QyTrJCfwJro1KLpDcQTfex5Vrj+ChrMERh0FMEKSRfg++RUMviqqUAACgPJ3o4Yq6OYYtwGP0VPcfx7/PN5uobM17XLpL+4973MZL1Gu1/uNd9Zpj2AKMos9o3mgbvUXv0Uf9nrca5xi2ALN02vHxLtX++9EgGqbz9/jOMWwBfqLfaNGo2v8k+oqm9XvRaplj2AJt0mH/TbtolWEWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAe7AH/AYaNw==
+  </data>
+ </layer>
+ <layer name="Decoration" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztzssJAkEQRdEya0MwBJPQDNQI1AT8JCBoAIKWMgizGxdNoXMOvO5NN9wIAAAAAFqYVgeMwCK3HPh21t2bRi1ErHLrgW/n3b1v1ELENrf78s+5RQhvx9ypOgJ+2KE6gJ5LdQA99+qAkbnmbtURfDxex6S6AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgH/1BEOwD9U=
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="100" height="100">
+  <object name="player start" type="playerStart" gid="101" x="483" y="725"/>
+ </objectgroup>
+</map>
