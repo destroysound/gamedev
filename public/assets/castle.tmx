@@ -19,6 +19,6 @@
   </data>
  </layer>
  <objectgroup name="Objects" width="100" height="100">
-  <object name="player start" type="playerStart" gid="101" x="483" y="725"/>
+  <object name="player start" type="playerStart" gid="101" x="906" y="708"/>
  </objectgroup>
 </map>
