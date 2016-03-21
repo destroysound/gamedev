@@ -33,6 +33,10 @@ function create() {
     terrain = map.createLayer('Terrain');
     buildings = map.createLayer('Buildings');
     decorations = map.createLayer('Decoration');
+    map.setCollisionBetween(1, 10000, true, buildings);
+    map.setCollisionBetween(1, 10000, true, decorations);
+    terrain.debug = true;
+    buildings.debug = true;
 
     //  This resizes the game world to match the layer dimensions
     terrain.resizeWorld();
@@ -44,7 +48,6 @@ function create() {
     map.createFromObjects('Objects', 101, '', 0, true, false, respawn);
 
     respawn.forEach(function (p) {
-        console.log(p);
         player.reset(p.x, p.y);
     });
 
@@ -58,9 +61,9 @@ function create() {
 function update() {
 
     game.physics.arcade.collide(player, buildings);
+    game.physics.arcade.collide(player, decorations);
 
-    player.body.velocity.y = 0; 
-    player.body.velocity.x = 0; 
+    player.body.velocity.set(0); 
 
     if (cursors.up.isDown) {
         player.body.velocity.y = -150;
